@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘事件</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="Js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2>欢迎来到{{name}}学习</h2>
+        <input type="text" placeholder="按下回车提示输入" @keyup.enter="showInfo">
+
+        <!-- 键盘事件：@keyup.enter
+            vue常用按键别名：
+        enter回车，delete删除和退格，esc退出，space空格，tab换行，
+        up上，down下，left左，right右 -->
+
+        <!-- @keydown.tab tab会使焦点转移，搭配keyup使用无法捕获按键回复，应搭配keydown使用
+        系统修饰键用法特殊：shift，ctrl，meta，alt
+            搭配keyup：按下修饰键的同时，再按下其他按键，随后释放其他键，事件才被触发
+            搭配keydown：正常触发事件 -->
+
+    </div>
+
+</body>
+
+<script>
+    Vue.config.productionTip = false
+
+    // Vue.config.keyCode.huiche = 13 //定义了一个回车别名
+
+    new Vue({
+        el:'#root',
+        data:{
+            name:'尚硅谷'
+        },
+        methods:{
+            showInfo(e){
+                // if(e.keyCode !== 13) return
+                console.log(e.target.value)
+            }
+        }
+    })
+</script>
+</html>
